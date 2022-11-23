@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import utils
 
-webcam = True  # if you're using letter paper, make sure it is portraits
+webcam = False  # if you're using letter paper, make sure it is portraits
 path = 'example.jpg'  # note that the shadow is picked up
 cap = cv2.VideoCapture(0)  # set video capture device``
 cap.set(10, 160)  # set brightness
@@ -23,10 +23,10 @@ while True:
     else:
         img = cv2.imread(path)
 
-    # delete this line if you're using an example image (remember to unindent as well)
-    if success:
+    # uncomment this line if you're using a webcam
+    # if success:
         imgContours, conts = utils.getContours(
-            img, minArea=50000, filter=4)
+            img, showCanny=True, minArea=50000, filter=4)
 
         if len(conts) != 0:
             # pre-sorted so that first is largest, and find it's approx points
